@@ -1,0 +1,16 @@
+:root {
+  --clr__black: #{$clr-black};
+  --clr__white: #{$clr-white};
+  --clr__orange: #{$clr-orange};
+  --clr__purple: #{$clr-purple};
+
+  --clr__background-primary: #{$clr-white};
+
+  --clr__text-primary: #{$clr-black};
+}
+
+[theme="dark"] {
+  --clr__background-primary: #{$clr-black};
+
+  --clr__text-primary: #{$clr-white};
+}
