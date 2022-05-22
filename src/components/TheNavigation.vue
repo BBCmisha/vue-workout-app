@@ -14,10 +14,16 @@
         <router-link class="navigation__list-item" :to="{ name: $routes.HOME }">
           Home
         </router-link>
-        <router-link class="navigation__list-item" :to="{ name: $routes.HOME }">
+        <router-link
+          class="navigation__list-item"
+          :to="{ name: $routes.CREATE }"
+        >
           Create
         </router-link>
-        <router-link class="navigation__list-item" :to="{ name: $routes.HOME }">
+        <router-link
+          class="navigation__list-item"
+          :to="{ name: $routes.LOGIN }"
+        >
           Login
         </router-link>
         <li class="navigation__list-item">Logout</li>

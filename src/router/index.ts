@@ -1,18 +1,26 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { ROUTE_NAMES } from '@/helpers/enums'
+
 import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: ROUTE_NAMES.HOME,
     component: Home,
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  // },
+  {
+    path: '/login',
+    name: ROUTE_NAMES.LOGIN,
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+  },
+  {
+    path: '/create',
+    name: ROUTE_NAMES.CREATE,
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Create.vue'),
+  },
 ]
 
 const router = createRouter({

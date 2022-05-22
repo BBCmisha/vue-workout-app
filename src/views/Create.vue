@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div class="login">
+    <h1>Create</h1>
   </div>
 </template>
 
@@ -8,7 +8,10 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'home',
-  components: {},
+  setup() {
+    return {}
+  },
 })
 </script>
+
+<style lang="scss" scoped></style>
