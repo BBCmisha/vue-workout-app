@@ -1,9 +1,24 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
+  <div>
+    <TheNavigation />
+    <router-view />
   </div>
-  <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+import TheNavigation from '@/components/TheNavigation.vue'
+
+export default defineComponent({
+  components: {
+    TheNavigation,
+  },
+  setup() {
+    return {}
+  },
+})
+</script>
 
 <style lang="scss">
 @import '~@/assets/styles/main.scss';

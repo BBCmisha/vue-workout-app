@@ -3,4 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+import { ROUTE_NAMES } from './helpers/enums'
+
+const app = createApp(App)
+
+app.config.globalProperties.$routes = ROUTE_NAMES
+
+app.use(store).use(router).mount('#app')
