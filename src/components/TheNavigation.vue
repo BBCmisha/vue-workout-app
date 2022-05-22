@@ -56,7 +56,7 @@ export default defineComponent({
   padding: 1.5rem 0rem;
 
   &__wrapper {
-    border-bottom: 0.1rem solid var(--clr__grey-1);
+    background-color: var(--clr__grey-1);
   }
 
   &__list {

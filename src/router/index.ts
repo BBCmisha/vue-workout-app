@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { ROUTE_NAMES } from '@/helpers/enums'
 
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import Register from '@/views/Register.vue'
+import Create from '@/views/Create.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,14 +15,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: ROUTE_NAMES.LOGIN,
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+    component: Login,
+  },
+  {
+    path: '/register',
+    name: ROUTE_NAMES.REGISTER,
+    component: Register,
   },
   {
     path: '/create',
     name: ROUTE_NAMES.CREATE,
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Create.vue'),
+    component: Create,
   },
 ]
 

@@ -1,7 +1,7 @@
 <template>
   <div class="app__container">
-    <div class="login">
-      <h1>Login</h1>
+    <div class="register">
+      <h1>Register</h1>
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'login',
+  name: 'register',
   setup() {
     return {}
   },
