@@ -1,34 +1,39 @@
 <template>
   <header class="navigation__wrapper">
-    <nav class="navigation">
-      <div class="logo">
-        <img
-          class="logo__image"
-          src="@/assets/images/workout-logo.png"
-          alt="logo"
-        />
-        <span class="logo__text">Workout tracker</span>
-      </div>
+    <div class="app__container">
+      <nav class="navigation">
+        <div class="logo">
+          <img
+            class="logo__image"
+            src="@/assets/images/workout-logo.png"
+            alt="logo"
+          />
+          <span class="logo__text">Workout tracker</span>
+        </div>
 
-      <ul class="navigation__list">
-        <router-link class="navigation__list-item" :to="{ name: $routes.HOME }">
-          Home
-        </router-link>
-        <router-link
-          class="navigation__list-item"
-          :to="{ name: $routes.CREATE }"
-        >
-          Create
-        </router-link>
-        <router-link
-          class="navigation__list-item"
-          :to="{ name: $routes.LOGIN }"
-        >
-          Login
-        </router-link>
-        <li class="navigation__list-item">Logout</li>
-      </ul>
-    </nav>
+        <ul class="navigation__list">
+          <router-link
+            class="navigation__list-item"
+            :to="{ name: $routes.HOME }"
+          >
+            Home
+          </router-link>
+          <router-link
+            class="navigation__list-item"
+            :to="{ name: $routes.CREATE }"
+          >
+            Create
+          </router-link>
+          <router-link
+            class="navigation__list-item"
+            :to="{ name: $routes.LOGIN }"
+          >
+            Login
+          </router-link>
+          <li class="navigation__list-item">Logout</li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -48,9 +53,7 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0.5rem;
-  max-width: 102.4rem;
-  margin: 0 auto;
+  padding: 1.5rem 0rem;
 
   &__wrapper {
     border-bottom: 0.1rem solid var(--clr__grey-1);

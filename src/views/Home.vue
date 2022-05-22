@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div class="app__container">
+    <div class="home">
+      <h1>Home</h1>
+    </div>
   </div>
 </template>
 

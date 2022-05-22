@@ -1,0 +1,11 @@
+.app {
+  &__container {
+    width: 100%;
+    max-width: 140rem;
+    padding: 0 3.2rem;
+    margin: 0 auto;
+    @include respond-to(x-small) {
+      padding: 0 1.6rem;
+    }
+  }
+}
