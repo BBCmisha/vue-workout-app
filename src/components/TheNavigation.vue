@@ -19,18 +19,22 @@
             Home
           </router-link>
           <router-link
+            v-if="user"
             class="navigation__list-item"
             :to="{ name: $routes.CREATE }"
           >
             Create
           </router-link>
           <router-link
+            v-if="!user"
             class="navigation__list-item"
             :to="{ name: $routes.LOGIN }"
           >
             Login
           </router-link>
-          <li class="navigation__list-item">Logout</li>
+          <li v-if="user" class="navigation__list-item" @click="logout">
+            Logout
+          </li>
         </ul>
       </nav>
     </div>
@@ -38,11 +42,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { supabase } from '@/supabase/init'
+import { ROUTE_NAMES } from '@/helpers/enums'
 
 export default defineComponent({
   setup() {
-    return {}
+    const router = useRouter()
+    const store = useStore()
+    const user = computed(() => store.getters.getUser)
+
+    const logout = async () => {
+      await supabase.auth.signOut()
+      router.push({ name: ROUTE_NAMES.LOGIN })
+    }
+    return { user, logout }
   },
 })
 </script>
@@ -67,6 +83,7 @@ export default defineComponent({
   &__list-item {
     color: var(--clr__text-primary);
     text-decoration: none;
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-right: 1rem;

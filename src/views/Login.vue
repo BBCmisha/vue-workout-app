@@ -49,16 +49,30 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { supabase } from '@/supabase/init'
+import { ROUTE_NAMES } from '@/helpers/enums'
 
 export default defineComponent({
   name: 'login',
   setup() {
-    const email = ref<string | null>(null)
-    const password = ref<string | null>(null)
+    const router = useRouter()
+    const email = ref<string | undefined>()
+    const password = ref<string | undefined>()
     const errorMsg = ref<string | null>(null)
 
-    const submit = () => {
-      console.log('Submit user information')
+    const submit = async () => {
+      try {
+        const { error } = await supabase.auth.signIn({
+          email: email.value,
+          password: password.value,
+        })
+        if (error) throw error
+        router.push({ name: ROUTE_NAMES.HOME })
+      } catch (error) {
+        errorMsg.value = `Error: ${(error as Error).message}`
+        setTimeout(() => (errorMsg.value = null), 5000)
+      }
     }
 
     return { email, password, errorMsg, submit }

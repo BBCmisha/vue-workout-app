@@ -62,17 +62,36 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { supabase } from '@/supabase/init'
+import { ROUTE_NAMES } from '@/helpers/enums'
 
 export default defineComponent({
   name: 'register',
   setup() {
-    const email = ref<string | null>(null)
-    const password = ref<string | null>(null)
-    const confirmPassword = ref<string | null>(null)
+    const router = useRouter()
+    const email = ref<string | undefined>()
+    const password = ref<string | undefined>()
+    const confirmPassword = ref<string | undefined>()
     const errorMsg = ref<string | null>(null)
 
-    const submit = () => {
-      console.log('Submit user information')
+    const submit = async () => {
+      if (password.value === confirmPassword.value) {
+        try {
+          const { error } = await supabase.auth.signUp({
+            email: email.value,
+            password: password.value,
+          })
+          if (error) throw error
+          router.push({ name: ROUTE_NAMES.LOGIN })
+        } catch (error) {
+          errorMsg.value = (error as Error).message
+          setTimeout(() => (errorMsg.value = null), 5000)
+        }
+      } else {
+        errorMsg.value = 'Error: Passwords do not match'
+        setTimeout(() => (errorMsg.value = null), 5000)
+      }
     }
 
     return { email, password, confirmPassword, errorMsg, submit }
