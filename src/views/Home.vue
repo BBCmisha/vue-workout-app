@@ -17,7 +17,10 @@
           v-for="(workout, index) in data"
           :key="index"
         >
-          <router-link :to="{ name: $routes.CREATE }" class="home__card">
+          <router-link
+            :to="{ name: $routes.WORKOUT, params: { workoutId: workout.id } }"
+            class="home__card"
+          >
             <img
               v-if="workout.workoutType === 'cardio'"
               class="home__card-img"
@@ -40,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import { supabase } from '@/supabase/init'
 
 export default defineComponent({
@@ -63,7 +66,9 @@ export default defineComponent({
       }
     }
 
-    getData()
+    onMounted(async () => {
+      await getData()
+    })
 
     return { data, dataLoaded }
   },
